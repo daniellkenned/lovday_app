@@ -5,670 +5,428 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lovday App — Protótipo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --pink: #D4537E;
-  --pink-light: #3a1a26;
-  --pink-mid: #F4C0D1;
-  --pink-dark: #993556;
-  --pink-deep: #72243E;
-  --bg: #1a0e13;
-  --bg2: #221219;
-  --bg3: #2d1820;
-  --surface: #2a1520;
-  --border: rgba(212,83,126,0.15);
-  --border2: rgba(212,83,126,0.25);
-  --text: #f2e4ea;
-  --text2: #b08898;
-  --text3: #7a5568;
-  --green-bg: #1a2e1a;
-  --green-text: #6dbf6d;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --pink: #D4537E; --pink-light: #3a1a26; --pink-mid: #F4C0D1;
+  --pink-dark: #993556; --pink-deep: #72243E;
+  --bg: #1a0e13; --bg2: #221219; --bg3: #2d1820; --surface: #2a1520;
+  --border: rgba(212,83,126,0.15); --border2: rgba(212,83,126,0.28);
+  --text: #f2e4ea; --text2: #b08898; --text3: #7a5568;
+  --green-bg: #1a2e1a; --green-text: #6dbf6d;
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 18px;
 }
-
 body {
   font-family: 'DM Sans', sans-serif;
   background: #0d0508;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  display: flex; flex-direction: column; align-items: center;
   padding: 32px 16px 48px;
 }
-
 .top-label {
-  font-size: 12px;
-  color: var(--pink);
-  font-weight: 500;
-  letter-spacing: .06em;
-  margin-bottom: 20px;
-  text-align: center;
-  opacity: .7;
-  text-transform: uppercase;
+  font-size: 11px; color: var(--pink); font-weight: 500;
+  letter-spacing: .08em; margin-bottom: 20px; text-align: center;
+  opacity: .6; text-transform: uppercase;
 }
-
-/* Phone shell */
 .phone {
-  width: 375px;
-  max-width: 100%;
-  background: var(--bg);
-  border-radius: 44px;
-  overflow: hidden;
+  width: 375px; max-width: 100%; background: var(--bg);
+  border-radius: 44px; overflow: hidden;
   box-shadow: 0 0 0 8px #0d0508, 0 0 0 10px #2a1520, 0 40px 100px rgba(212,83,126,0.12);
-  position: relative;
-  min-height: 800px;
-  display: flex;
-  flex-direction: column;
+  position: relative; min-height: 800px; display: flex; flex-direction: column;
 }
-
 .notch {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 120px; height: 28px;
-  background: #0d0508;
-  border-radius: 0 0 20px 20px;
-  z-index: 100;
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 120px; height: 28px; background: #0d0508;
+  border-radius: 0 0 20px 20px; z-index: 100;
 }
-
 .status-bar {
-  background: var(--pink);
-  padding: 36px 24px 0;
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 600;
-  color: #fff;
+  background: var(--pink); padding: 36px 24px 0;
+  display: flex; justify-content: space-between;
+  font-size: 12px; font-weight: 600; color: #fff;
 }
-
-.nav-header {
-  background: var(--pink);
-  padding: 10px 20px 18px;
-  color: #fff;
-}
-
-.header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
+.nav-header { background: var(--pink); padding: 10px 20px 18px; color: #fff; }
+.header-row { display: flex; justify-content: space-between; align-items: center; }
+.header-left { display: flex; align-items: center; gap: 10px; }
 .avatar {
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.25);
-  border: 2px solid rgba(255,255,255,0.6);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.25); border: 2px solid rgba(255,255,255,0.6);
   display: flex; align-items: center; justify-content: center;
-  font-size: 15px; font-weight: 600; color: #fff;
-  flex-shrink: 0;
+  font-size: 15px; font-weight: 600; color: #fff; flex-shrink: 0;
 }
-
 .greeting { font-size: 12px; opacity: .85; }
 .username { font-size: 20px; font-weight: 600; font-family: 'Playfair Display', serif; }
-
 .icon-btn {
-  width: 36px; height: 36px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  border: none; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; font-size: 18px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.2); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; color: #fff;
 }
-
+.icon-btn svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .xp-pill {
   display: inline-flex; align-items: center; gap: 6px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 12px; color: #fff;
-  margin-top: 8px;
+  background: rgba(255,255,255,0.2); border-radius: 20px;
+  padding: 4px 12px; font-size: 12px; color: #fff; margin-top: 8px;
 }
-
-/* Pages */
 .page { display: none; flex-direction: column; flex: 1; }
 .page.active { display: flex; }
-
 .scroll-area {
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1;
-  overflow-y: auto;
-  background: var(--bg);
+  padding: 14px; display: flex; flex-direction: column;
+  gap: 12px; flex: 1; overflow-y: auto; background: var(--bg);
 }
-
-/* Cards */
-.card {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 14px 16px;
-  border: 0.5px solid var(--border);
-}
-
-.card-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text3);
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  margin-bottom: 10px;
-}
-
-/* Dose button */
+.card { background: var(--surface); border-radius: var(--radius-lg); padding: 14px 16px; border: 0.5px solid var(--border); }
+.card-title { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
 .dose-btn {
-  width: 100%; padding: 14px;
-  background: var(--pink); color: #fff;
-  border: none; border-radius: var(--radius-md);
-  font-size: 15px; font-weight: 600;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  transition: all .2s;
+  width: 100%; padding: 14px; background: var(--pink); color: #fff;
+  border: none; border-radius: var(--radius-md); font-size: 15px; font-weight: 600;
+  font-family: 'DM Sans', sans-serif; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .2s;
 }
+.dose-btn svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .dose-btn:hover { filter: brightness(1.1); }
 .dose-btn.done { background: var(--green-bg); color: var(--green-text); border: 0.5px solid rgba(109,191,109,0.3); }
-
-/* Mini stats */
+.dose-btn.done svg { stroke: var(--green-text); }
 .mini-stats { display: flex; gap: 8px; margin-top: 10px; }
-.stat-box {
-  flex: 1; background: var(--bg2);
-  border-radius: var(--radius-sm);
-  padding: 10px; text-align: center;
-  border: 0.5px solid var(--border);
-}
+.stat-box { flex: 1; background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; border: 0.5px solid var(--border); }
 .stat-box .val { font-size: 20px; font-weight: 600; color: var(--text); }
 .stat-box .lbl { font-size: 11px; color: var(--text3); margin-top: 2px; }
-
-/* Streak */
 .streak-grid { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
 .streak-day {
   width: 34px; height: 34px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 11px; font-weight: 500;
-  background: var(--bg2); color: var(--text3);
-  border: 0.5px solid var(--border);
+  background: var(--bg2); color: var(--text3); border: 0.5px solid var(--border);
 }
 .streak-day.done { background: var(--pink); color: #fff; border-color: var(--pink); }
 .streak-day.today { border: 2px solid var(--pink); color: var(--pink); background: transparent; }
-
-/* Progress */
 .progress-bar-bg { height: 8px; background: var(--bg2); border-radius: 99px; overflow: hidden; }
 .progress-bar-fill { height: 100%; background: var(--pink); border-radius: 99px; }
 .progress-meta { display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); margin-top: 4px; }
 .progress-row { display:flex;justify-content:space-between;font-size:13px;font-weight:600;margin-bottom:6px; }
-
-/* Challenges */
-.challenge-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--border);
-}
+.challenge-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
 .challenge-item:last-child { border-bottom: none; padding-bottom: 0; }
-.ch-icon {
-  width: 40px; height: 40px; border-radius: var(--radius-sm);
-  background: var(--pink-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; color: var(--pink); flex-shrink: 0;
-}
+.ch-icon { width: 40px; height: 40px; border-radius: var(--radius-sm); background: var(--pink-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ch-icon svg { width: 22px; height: 22px; stroke: var(--pink); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .ch-info { flex: 1; }
 .ch-title { font-size: 14px; font-weight: 600; color: var(--text); }
 .ch-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
-.ch-badge {
-  font-size: 11px; font-weight: 600;
-  padding: 4px 10px; border-radius: 99px;
-  background: var(--pink-light); color: var(--pink);
-  flex-shrink: 0; white-space: nowrap;
-}
+.ch-badge { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 99px; background: var(--pink-light); color: var(--pink); flex-shrink: 0; white-space: nowrap; }
 .ch-badge.done { background: var(--green-bg); color: var(--green-text); }
-
-/* Week grid */
 .week-labels { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-bottom: 4px; }
 .week-lbl { text-align: center; font-size: 10px; color: var(--text3); font-weight: 500; }
 .week-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; }
-.week-cell {
-  aspect-ratio: 1; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; font-weight: 600;
-  background: var(--bg2); color: var(--text3);
-  border: 0.5px solid var(--border); cursor: pointer;
-  transition: all .15s;
-}
+.week-cell { aspect-ratio: 1; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; background: var(--bg2); color: var(--text3); border: 0.5px solid var(--border); cursor: pointer; transition: all .15s; }
 .week-cell.done { background: var(--pink); color: #fff; border-color: var(--pink); }
 .week-cell.rest { opacity: .35; cursor: default; }
-
-/* Modalidades */
 .modalidades { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
-.mod-btn {
-  padding: 6px 13px; border-radius: 99px;
-  border: 0.5px solid var(--border2);
-  background: var(--bg2); color: var(--text2);
-  font-size: 12px; font-weight: 500;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer; transition: all .15s;
-}
+.mod-btn { padding: 6px 13px; border-radius: 99px; border: 0.5px solid var(--border2); background: var(--bg2); color: var(--text2); font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all .15s; }
 .mod-btn.active { background: var(--pink-light); color: var(--pink); border-color: var(--pink); }
-
-/* Rewards */
-.reward-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--border);
-}
+.reward-item { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 0.5px solid var(--border); }
 .reward-item:last-child { border-bottom: none; }
-.reward-icon {
-  width: 44px; height: 44px; border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; flex-shrink: 0;
-}
-.reward-icon.unlocked { background: var(--pink-light); color: var(--pink); }
-.reward-icon.locked { background: var(--bg2); color: var(--text3); }
+.reward-icon { width: 44px; height: 44px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.reward-icon svg { width: 24px; height: 24px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.reward-icon.unlocked { background: var(--pink-light); }
+.reward-icon.unlocked svg { stroke: var(--pink); }
+.reward-icon.locked { background: var(--bg2); }
+.reward-icon.locked svg { stroke: var(--text3); }
 .reward-info { flex: 1; }
 .reward-title { font-size: 14px; font-weight: 600; color: var(--text); }
 .reward-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
-.reward-btn {
-  font-size: 12px; font-weight: 600;
-  padding: 5px 12px; border-radius: 99px;
-  border: none; cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
-  flex-shrink: 0;
-}
+.reward-btn { font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 99px; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; flex-shrink: 0; }
 .reward-btn.claim { background: var(--pink); color: #fff; }
 .reward-btn.lock { background: var(--bg2); color: var(--text3); cursor: default; }
-
-/* Points header */
 .points-row { display: flex; gap: 8px; margin-top: 10px; }
-.points-box {
-  flex: 1; background: rgba(255,255,255,0.15);
-  border-radius: 10px; padding: 8px 12px;
-}
+.points-box { flex: 1; background: rgba(255,255,255,0.15); border-radius: 10px; padding: 8px 12px; }
 .points-box .plbl { font-size: 11px; color: rgba(255,255,255,.8); }
 .points-box .pval { font-size: 16px; font-weight: 600; color: #fff; }
-
-/* Profile */
-.profile-avatar-lg {
-  width: 72px; height: 72px; border-radius: 50%;
-  background: var(--pink); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px; font-weight: 600;
-  margin: 0 auto 10px;
-  font-family: 'Playfair Display', serif;
-}
+.profile-avatar-lg { width: 72px; height: 72px; border-radius: 50%; background: var(--pink); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; font-weight: 600; margin: 0 auto 10px; font-family: 'Playfair Display', serif; }
 .profile-name { font-size: 18px; font-weight: 600; color: var(--text); text-align: center; font-family: 'Playfair Display', serif; }
 .profile-since { font-size: 12px; color: var(--text3); text-align: center; margin-top: 3px; }
-
-/* Badges */
 .badge-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
 .badge-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.badge-circle {
-  width: 52px; height: 52px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px;
-}
-.badge-circle.earned { background: var(--pink-light); color: var(--pink); }
-.badge-circle.locked { background: var(--bg2); color: var(--text3); opacity: .5; }
+.badge-circle { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.badge-circle svg { width: 24px; height: 24px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.badge-circle.earned { background: var(--pink-light); }
+.badge-circle.earned svg { stroke: var(--pink); }
+.badge-circle.locked { background: var(--bg2); opacity: .45; }
+.badge-circle.locked svg { stroke: var(--text3); }
 .badge-name { font-size: 10px; color: var(--text3); text-align: center; font-weight: 500; }
-
-/* Section label */
-.section-label {
-  font-size: 11px; font-weight: 700; color: var(--text3);
-  text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px;
-}
-
-/* Btn pink */
-.btn-pink {
-  width: 100%; padding: 13px;
-  background: var(--pink); color: #fff;
-  border: none; border-radius: var(--radius-md);
-  font-size: 14px; font-weight: 600;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-}
-
-/* Tab bar */
-.tab-bar {
-  background: var(--bg2);
-  border-top: 0.5px solid var(--border);
-  display: flex;
-  padding: 10px 0 22px;
-}
-.tab-btn {
-  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-  border: none; background: transparent; cursor: pointer;
-  font-size: 10px; font-weight: 500;
-  color: var(--text3); font-family: 'DM Sans', sans-serif;
-  padding: 4px; transition: color .15s;
-}
-.tab-btn i { font-size: 22px; }
+.section-label { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+.btn-pink { width: 100%; padding: 13px; background: var(--pink); color: #fff; border: none; border-radius: var(--radius-md); font-size: 14px; font-weight: 600; font-family: 'DM Sans', sans-serif; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-pink svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.tab-bar { background: var(--bg2); border-top: 0.5px solid var(--border); display: flex; padding: 10px 0 22px; }
+.tab-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; border: none; background: transparent; cursor: pointer; font-size: 10px; font-weight: 500; color: var(--text3); font-family: 'DM Sans', sans-serif; padding: 4px; transition: color .15s; }
+.tab-btn svg { width: 24px; height: 24px; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; stroke: currentColor; }
 .tab-btn.active { color: var(--pink); }
-
-.watermark {
-  margin-top: 20px;
-  font-size: 12px;
-  color: var(--pink);
-  opacity: .4;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-}
-
+.watermark { margin-top: 20px; font-size: 12px; color: var(--pink); opacity: .4; text-align: center; font-family: 'Playfair Display', serif; }
 .scroll-area::-webkit-scrollbar { width: 3px; }
 .scroll-area::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 99px; }
 </style>
 </head>
 <body>
-
 <p class="top-label">Lovday App · Protótipo v1.0</p>
-
 <div class="phone">
-  <div class="notch"></div>
+<div class="notch"></div>
 
-  <!-- HOME -->
-  <div id="page-home" class="page active">
-    <div class="status-bar">
-      <span>9:41</span>
-      <span><i class="ti ti-wifi"></i> <i class="ti ti-battery-2"></i></span>
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div class="status-bar"><span>9:41</span><span>▲ ●●</span></div>
+  <div class="nav-header">
+    <div class="header-row">
+      <div class="header-left">
+        <div class="avatar">AL</div>
+        <div><div class="greeting">Bom dia ✨</div><div class="username">Ana Luíza</div></div>
+      </div>
+      <button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
     </div>
-    <div class="nav-header">
-      <div class="header-row">
-        <div class="header-left">
-          <div class="avatar">AL</div>
-          <div>
-            <div class="greeting">Bom dia ✨</div>
-            <div class="username">Ana Luíza</div>
-          </div>
-        </div>
-        <button class="icon-btn"><i class="ti ti-bell"></i></button>
-      </div>
-      <div class="xp-pill"><i class="ti ti-star"></i> 1.240 pontos Lovday</div>
-    </div>
-    <div class="scroll-area">
-      <div class="card">
-        <div class="card-title">Sua dose de hoje</div>
-        <button class="dose-btn" id="doseBtn" onclick="toggleDose()">
-          <i class="ti ti-droplet"></i> Marcar dose tomada
-        </button>
-        <div class="mini-stats">
-          <div class="stat-box"><div class="val" id="streakVal">14</div><div class="lbl">dias seguidos</div></div>
-          <div class="stat-box"><div class="val">87%</div><div class="lbl">taxa do mês</div></div>
-          <div class="stat-box"><div class="val">50</div><div class="lbl">doses usadas</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Sequência de maio</div>
-        <div class="streak-grid" id="streakGrid"></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Próxima recompensa</div>
-        <div class="progress-row">
-          <span style="color:var(--text)">Desconto 15% — 30 dias</span>
-          <span style="color:var(--pink)">14/30</span>
-        </div>
-        <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:46%"></div></div>
-        <div class="progress-meta"><span>Começando</span><span>16 dias restantes</span></div>
-      </div>
-      <div class="card">
-        <div class="card-title">Desafios ativos</div>
-        <div class="challenge-item">
-          <div class="ch-icon"><i class="ti ti-run"></i></div>
-          <div class="ch-info">
-            <div class="ch-title">Semana ativa</div>
-            <div class="ch-sub">4 treinos esta semana · 3/4 feitos</div>
-          </div>
-          <span class="ch-badge">+200 pts</span>
-        </div>
-        <div class="challenge-item">
-          <div class="ch-icon"><i class="ti ti-droplet"></i></div>
-          <div class="ch-info">
-            <div class="ch-title">Hidratação diária</div>
-            <div class="ch-sub">2L por 7 dias · 5/7 feitos</div>
-          </div>
-          <span class="ch-badge done">Quase lá!</span>
-        </div>
+    <div class="xp-pill">★ 1.240 pontos Lovday</div>
+  </div>
+  <div class="scroll-area">
+    <div class="card">
+      <div class="card-title">Sua dose de hoje</div>
+      <button class="dose-btn" id="doseBtn" onclick="toggleDose()">
+        <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> Marcar dose tomada
+      </button>
+      <div class="mini-stats">
+        <div class="stat-box"><div class="val" id="streakVal">14</div><div class="lbl">dias seguidos</div></div>
+        <div class="stat-box"><div class="val">87%</div><div class="lbl">taxa do mês</div></div>
+        <div class="stat-box"><div class="val">50</div><div class="lbl">doses usadas</div></div>
       </div>
     </div>
-    <div class="tab-bar">
-      <button class="tab-btn active" id="tb-home" onclick="switchTab('home')"><i class="ti ti-home"></i>Início</button>
-      <button class="tab-btn" id="tb-treinos" onclick="switchTab('treinos')"><i class="ti ti-run"></i>Treinos</button>
-      <button class="tab-btn" id="tb-rewards" onclick="switchTab('rewards')"><i class="ti ti-gift"></i>Rewards</button>
-      <button class="tab-btn" id="tb-perfil" onclick="switchTab('perfil')"><i class="ti ti-user"></i>Perfil</button>
+    <div class="card">
+      <div class="card-title">Sequência de maio</div>
+      <div class="streak-grid" id="streakGrid"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Próxima recompensa</div>
+      <div class="progress-row"><span style="color:var(--text)">Desconto 15% — 30 dias</span><span style="color:var(--pink)">14/30</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar-fill" style="width:46%"></div></div>
+      <div class="progress-meta"><span>Começando</span><span>16 dias restantes</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Desafios ativos</div>
+      <div class="challenge-item">
+        <div class="ch-icon"><svg viewBox="0 0 24 24"><path d="M13 4v7l3 3-3 3v3"/><path d="M6 4v16"/></svg></div>
+        <div class="ch-info"><div class="ch-title">Semana ativa</div><div class="ch-sub">4 treinos esta semana · 3/4 feitos</div></div>
+        <span class="ch-badge">+200 pts</span>
+      </div>
+      <div class="challenge-item">
+        <div class="ch-icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <div class="ch-info"><div class="ch-title">Hidratação diária</div><div class="ch-sub">2L por 7 dias · 5/7 feitos</div></div>
+        <span class="ch-badge done">Quase lá!</span>
+      </div>
     </div>
   </div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Início</button>
+    <button class="tab-btn" onclick="switchTab('treinos')"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><path d="M5 20l2-6 3 3 2-8 3 6 2-3 2 8"/></svg>Treinos</button>
+    <button class="tab-btn" onclick="switchTab('rewards')"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>Rewards</button>
+    <button class="tab-btn" onclick="switchTab('perfil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Perfil</button>
+  </div>
+</div>
 
-  <!-- TREINOS -->
-  <div id="page-treinos" class="page">
-    <div class="status-bar"><span>9:41</span><span><i class="ti ti-wifi"></i> <i class="ti ti-battery-2"></i></span></div>
-    <div class="nav-header">
-      <div class="header-row">
-        <div class="header-left">
-          <div class="avatar">AL</div>
-          <div><div class="greeting">Atividade física</div><div class="username">Minha rotina</div></div>
-        </div>
-        <button class="icon-btn"><i class="ti ti-settings"></i></button>
+<!-- TREINOS -->
+<div id="page-treinos" class="page">
+  <div class="status-bar"><span>9:41</span><span>▲ ●●</span></div>
+  <div class="nav-header">
+    <div class="header-row">
+      <div class="header-left">
+        <div class="avatar">AL</div>
+        <div><div class="greeting">Atividade física</div><div class="username">Minha rotina</div></div>
       </div>
-    </div>
-    <div class="scroll-area">
-      <div class="card">
-        <div class="card-title">Semana atual — meta: 4 treinos</div>
-        <div class="week-labels">
-          <div class="week-lbl">Seg</div><div class="week-lbl">Ter</div><div class="week-lbl">Qua</div>
-          <div class="week-lbl">Qui</div><div class="week-lbl">Sex</div><div class="week-lbl">Sáb</div><div class="week-lbl">Dom</div>
-        </div>
-        <div class="week-grid" id="weekGrid"></div>
-        <div style="display:flex;justify-content:space-between;margin-top:12px;font-size:13px;">
-          <span style="color:var(--text3)">3 de 4 treinos feitos</span>
-          <span style="color:var(--pink);font-weight:600">+150 pts ao completar</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Marcar treino de hoje</div>
-        <div class="modalidades" id="modalidades"></div>
-        <button class="btn-pink"><i class="ti ti-check"></i> Registrar treino</button>
-      </div>
-      <div class="card">
-        <div class="card-title">Histórico</div>
-        <div class="challenge-item">
-          <div class="ch-icon"><i class="ti ti-barbell"></i></div>
-          <div class="ch-info"><div class="ch-title">Musculação</div><div class="ch-sub">Qui, 14 mai</div></div>
-          <span class="ch-badge done">+50 pts</span>
-        </div>
-        <div class="challenge-item">
-          <div class="ch-icon"><i class="ti ti-walk"></i></div>
-          <div class="ch-info"><div class="ch-title">Caminhada</div><div class="ch-sub">Qua, 13 mai</div></div>
-          <span class="ch-badge done">+50 pts</span>
-        </div>
-        <div class="challenge-item">
-          <div class="ch-icon"><i class="ti ti-yoga"></i></div>
-          <div class="ch-info"><div class="ch-title">Yoga</div><div class="ch-sub">Seg, 11 mai</div></div>
-          <span class="ch-badge done">+50 pts</span>
-        </div>
-      </div>
-    </div>
-    <div class="tab-bar">
-      <button class="tab-btn" id="tb-home2" onclick="switchTab('home')"><i class="ti ti-home"></i>Início</button>
-      <button class="tab-btn active" id="tb-treinos2" onclick="switchTab('treinos')"><i class="ti ti-run"></i>Treinos</button>
-      <button class="tab-btn" id="tb-rewards2" onclick="switchTab('rewards')"><i class="ti ti-gift"></i>Rewards</button>
-      <button class="tab-btn" id="tb-perfil2" onclick="switchTab('perfil')"><i class="ti ti-user"></i>Perfil</button>
+      <button class="icon-btn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M5.34 18.66l-1.41 1.41M21 12h-2M5 12H3M19.07 19.07l-1.41-1.41M5.34 5.34L3.93 3.93"/></svg></button>
     </div>
   </div>
-
-  <!-- REWARDS -->
-  <div id="page-rewards" class="page">
-    <div class="status-bar"><span>9:41</span><span><i class="ti ti-wifi"></i> <i class="ti ti-battery-2"></i></span></div>
-    <div class="nav-header">
-      <div class="header-row">
-        <div class="header-left">
-          <div class="avatar">AL</div>
-          <div><div class="greeting">Seu saldo</div><div class="username">1.240 pontos</div></div>
-        </div>
-        <button class="icon-btn"><i class="ti ti-history"></i></button>
-      </div>
-      <div class="points-row">
-        <div class="points-box"><div class="plbl">Desconto disponível</div><div class="pval">10% OFF</div></div>
-        <div class="points-box"><div class="plbl">Sequência atual</div><div class="pval">14 dias 🔥</div></div>
-      </div>
+  <div class="scroll-area">
+    <div class="card">
+      <div class="card-title">Semana atual — meta: 4 treinos</div>
+      <div class="week-labels"><div class="week-lbl">Seg</div><div class="week-lbl">Ter</div><div class="week-lbl">Qua</div><div class="week-lbl">Qui</div><div class="week-lbl">Sex</div><div class="week-lbl">Sáb</div><div class="week-lbl">Dom</div></div>
+      <div class="week-grid" id="weekGrid"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:12px;font-size:13px;"><span style="color:var(--text3)">3 de 4 treinos feitos</span><span style="color:var(--pink);font-weight:600">+150 pts ao completar</span></div>
     </div>
-    <div class="scroll-area">
-      <div class="card">
-        <div class="section-label">Recompensas de constância</div>
-        <div class="reward-item">
-          <div class="reward-icon unlocked"><i class="ti ti-discount"></i></div>
-          <div class="reward-info"><div class="reward-title">10% de desconto</div><div class="reward-sub">7 dias seguidos — desbloqueado!</div></div>
-          <button class="reward-btn claim">Resgatar</button>
-        </div>
-        <div class="reward-item">
-          <div class="reward-icon locked"><i class="ti ti-gift"></i></div>
-          <div class="reward-info"><div class="reward-title">Brinde surpresa</div><div class="reward-sub">30 dias seguidos — faltam 16</div></div>
-          <button class="reward-btn lock">Bloqueado</button>
-        </div>
-        <div class="reward-item">
-          <div class="reward-icon locked"><i class="ti ti-tag"></i></div>
-          <div class="reward-info"><div class="reward-title">Cupom 20% OFF</div><div class="reward-sub">60 dias seguidos — faltam 46</div></div>
-          <button class="reward-btn lock">Bloqueado</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-label">Trocar pontos</div>
-        <div class="reward-item">
-          <div class="reward-icon unlocked"><i class="ti ti-currency-dollar"></i></div>
-          <div class="reward-info"><div class="reward-title">500 pts → R$5 de crédito</div><div class="reward-sub">Use na próxima compra</div></div>
-          <button class="reward-btn claim">Trocar</button>
-        </div>
-        <div class="reward-item">
-          <div class="reward-icon unlocked"><i class="ti ti-star"></i></div>
-          <div class="reward-info"><div class="reward-title">1.000 pts → Frete grátis</div><div class="reward-sub">Em qualquer pedido</div></div>
-          <button class="reward-btn claim">Trocar</button>
-        </div>
-      </div>
+    <div class="card">
+      <div class="card-title">Marcar treino de hoje</div>
+      <div class="modalidades" id="modalidades"></div>
+      <button class="btn-pink"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Registrar treino</button>
     </div>
-    <div class="tab-bar">
-      <button class="tab-btn" onclick="switchTab('home')"><i class="ti ti-home"></i>Início</button>
-      <button class="tab-btn" onclick="switchTab('treinos')"><i class="ti ti-run"></i>Treinos</button>
-      <button class="tab-btn active" onclick="switchTab('rewards')"><i class="ti ti-gift"></i>Rewards</button>
-      <button class="tab-btn" onclick="switchTab('perfil')"><i class="ti ti-user"></i>Perfil</button>
+    <div class="card">
+      <div class="card-title">Histórico</div>
+      <div class="challenge-item">
+        <div class="ch-icon"><svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M6 12h12"/></svg></div>
+        <div class="ch-info"><div class="ch-title">Musculação</div><div class="ch-sub">Qui, 14 mai</div></div>
+        <span class="ch-badge done">+50 pts</span>
+      </div>
+      <div class="challenge-item">
+        <div class="ch-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><path d="M5 20l2-6 3 3 2-8 3 6 2-3 2 8"/></svg></div>
+        <div class="ch-info"><div class="ch-title">Caminhada</div><div class="ch-sub">Qua, 13 mai</div></div>
+        <span class="ch-badge done">+50 pts</span>
+      </div>
+      <div class="challenge-item">
+        <div class="ch-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="ch-info"><div class="ch-title">Yoga</div><div class="ch-sub">Seg, 11 mai</div></div>
+        <span class="ch-badge done">+50 pts</span>
+      </div>
     </div>
   </div>
+  <div class="tab-bar">
+    <button class="tab-btn" onclick="switchTab('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Início</button>
+    <button class="tab-btn active" onclick="switchTab('treinos')"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><path d="M5 20l2-6 3 3 2-8 3 6 2-3 2 8"/></svg>Treinos</button>
+    <button class="tab-btn" onclick="switchTab('rewards')"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>Rewards</button>
+    <button class="tab-btn" onclick="switchTab('perfil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Perfil</button>
+  </div>
+</div>
 
-  <!-- PERFIL -->
-  <div id="page-perfil" class="page">
-    <div class="status-bar"><span>9:41</span><span><i class="ti ti-wifi"></i> <i class="ti ti-battery-2"></i></span></div>
-    <div class="nav-header">
-      <div class="header-row">
-        <div class="header-left">
-          <div class="avatar">AL</div>
-          <div><div class="greeting">Perfil</div><div class="username">Minha jornada</div></div>
-        </div>
-        <button class="icon-btn"><i class="ti ti-edit"></i></button>
+<!-- REWARDS -->
+<div id="page-rewards" class="page">
+  <div class="status-bar"><span>9:41</span><span>▲ ●●</span></div>
+  <div class="nav-header">
+    <div class="header-row">
+      <div class="header-left">
+        <div class="avatar">AL</div>
+        <div><div class="greeting">Seu saldo</div><div class="username">1.240 pontos</div></div>
       </div>
+      <button class="icon-btn"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg></button>
     </div>
-    <div class="scroll-area">
-      <div class="card" style="text-align:center;padding:20px 16px">
-        <div class="profile-avatar-lg">AL</div>
-        <div class="profile-name">Ana Luíza</div>
-        <div class="profile-since">Membro desde jan/2025</div>
-        <div class="mini-stats" style="margin-top:14px">
-          <div class="stat-box"><div class="val">14</div><div class="lbl">streak atual</div></div>
-          <div class="stat-box"><div class="val">1.240</div><div class="lbl">pontos</div></div>
-          <div class="stat-box"><div class="val">3</div><div class="lbl">recompensas</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-title">Conquistas</div>
-        <div class="badge-grid">
-          <div class="badge-item"><div class="badge-circle earned"><i class="ti ti-flame"></i></div><div class="badge-name">7 dias</div></div>
-          <div class="badge-item"><div class="badge-circle earned"><i class="ti ti-barbell"></i></div><div class="badge-name">1º treino</div></div>
-          <div class="badge-item"><div class="badge-circle earned"><i class="ti ti-star"></i></div><div class="badge-name">100 pts</div></div>
-          <div class="badge-item"><div class="badge-circle locked"><i class="ti ti-trophy"></i></div><div class="badge-name">30 dias</div></div>
-          <div class="badge-item"><div class="badge-circle locked"><i class="ti ti-heart"></i></div><div class="badge-name">Dedicada</div></div>
-          <div class="badge-item"><div class="badge-circle locked"><i class="ti ti-crown"></i></div><div class="badge-name">Elite</div></div>
-          <div class="badge-item"><div class="badge-circle locked"><i class="ti ti-gift"></i></div><div class="badge-name">60 dias</div></div>
-          <div class="badge-item"><div class="badge-circle locked"><i class="ti ti-rocket"></i></div><div class="badge-name">Imparável</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="tab-bar">
-      <button class="tab-btn" onclick="switchTab('home')"><i class="ti ti-home"></i>Início</button>
-      <button class="tab-btn" onclick="switchTab('treinos')"><i class="ti ti-run"></i>Treinos</button>
-      <button class="tab-btn" onclick="switchTab('rewards')"><i class="ti ti-gift"></i>Rewards</button>
-      <button class="tab-btn active" onclick="switchTab('perfil')"><i class="ti ti-user"></i>Perfil</button>
+    <div class="points-row">
+      <div class="points-box"><div class="plbl">Desconto disponível</div><div class="pval">10% OFF</div></div>
+      <div class="points-box"><div class="plbl">Sequência atual</div><div class="pval">14 dias 🔥</div></div>
     </div>
   </div>
+  <div class="scroll-area">
+    <div class="card">
+      <div class="section-label">Recompensas de constância</div>
+      <div class="reward-item">
+        <div class="reward-icon unlocked"><svg viewBox="0 0 24 24"><path d="M9 14l-4-4 4-4"/><path d="M5 10h11a4 4 0 0 1 0 8h-1"/></svg></div>
+        <div class="reward-info"><div class="reward-title">10% de desconto</div><div class="reward-sub">7 dias seguidos — desbloqueado!</div></div>
+        <button class="reward-btn claim">Resgatar</button>
+      </div>
+      <div class="reward-item">
+        <div class="reward-icon locked"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
+        <div class="reward-info"><div class="reward-title">Brinde surpresa</div><div class="reward-sub">30 dias seguidos — faltam 16</div></div>
+        <button class="reward-btn lock">Bloqueado</button>
+      </div>
+      <div class="reward-item">
+        <div class="reward-icon locked"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <div class="reward-info"><div class="reward-title">Cupom 20% OFF</div><div class="reward-sub">60 dias seguidos — faltam 46</div></div>
+        <button class="reward-btn lock">Bloqueado</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-label">Trocar pontos</div>
+      <div class="reward-item">
+        <div class="reward-icon unlocked"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="reward-info"><div class="reward-title">500 pts → R$5 de crédito</div><div class="reward-sub">Use na próxima compra</div></div>
+        <button class="reward-btn claim">Trocar</button>
+      </div>
+      <div class="reward-item">
+        <div class="reward-icon unlocked"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="reward-info"><div class="reward-title">1.000 pts → Frete grátis</div><div class="reward-sub">Em qualquer pedido</div></div>
+        <button class="reward-btn claim">Trocar</button>
+      </div>
+    </div>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn" onclick="switchTab('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Início</button>
+    <button class="tab-btn" onclick="switchTab('treinos')"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><path d="M5 20l2-6 3 3 2-8 3 6 2-3 2 8"/></svg>Treinos</button>
+    <button class="tab-btn active" onclick="switchTab('rewards')"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>Rewards</button>
+    <button class="tab-btn" onclick="switchTab('perfil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Perfil</button>
+  </div>
+</div>
+
+<!-- PERFIL -->
+<div id="page-perfil" class="page">
+  <div class="status-bar"><span>9:41</span><span>▲ ●●</span></div>
+  <div class="nav-header">
+    <div class="header-row">
+      <div class="header-left">
+        <div class="avatar">AL</div>
+        <div><div class="greeting">Perfil</div><div class="username">Minha jornada</div></div>
+      </div>
+      <button class="icon-btn"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+    </div>
+  </div>
+  <div class="scroll-area">
+    <div class="card" style="text-align:center;padding:20px 16px">
+      <div class="profile-avatar-lg">AL</div>
+      <div class="profile-name">Ana Luíza</div>
+      <div class="profile-since">Membro desde jan/2025</div>
+      <div class="mini-stats" style="margin-top:14px">
+        <div class="stat-box"><div class="val">14</div><div class="lbl">streak atual</div></div>
+        <div class="stat-box"><div class="val">1.240</div><div class="lbl">pontos</div></div>
+        <div class="stat-box"><div class="val">3</div><div class="lbl">recompensas</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Conquistas</div>
+      <div class="badge-grid">
+        <div class="badge-item"><div class="badge-circle earned"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div><div class="badge-name">7 dias</div></div>
+        <div class="badge-item"><div class="badge-circle earned"><svg viewBox="0 0 24 24"><path d="M6 4v16M18 4v16M6 12h12"/></svg></div><div class="badge-name">1º treino</div></div>
+        <div class="badge-item"><div class="badge-circle earned"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="badge-name">100 pts</div></div>
+        <div class="badge-item"><div class="badge-circle locked"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div><div class="badge-name">30 dias</div></div>
+        <div class="badge-item"><div class="badge-circle locked"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="badge-name">Dedicada</div></div>
+        <div class="badge-item"><div class="badge-circle locked"><svg viewBox="0 0 24 24"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/></svg></div><div class="badge-name">Elite</div></div>
+        <div class="badge-item"><div class="badge-circle locked"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><div class="badge-name">60 dias</div></div>
+        <div class="badge-item"><div class="badge-circle locked"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div><div class="badge-name">Imparável</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn" onclick="switchTab('home')"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Início</button>
+    <button class="tab-btn" onclick="switchTab('treinos')"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><path d="M5 20l2-6 3 3 2-8 3 6 2-3 2 8"/></svg>Treinos</button>
+    <button class="tab-btn" onclick="switchTab('rewards')"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>Rewards</button>
+    <button class="tab-btn active" onclick="switchTab('perfil')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Perfil</button>
+  </div>
+</div>
 </div>
 
 <p class="watermark">Lovday App © 2025 — Protótipo v1.0</p>
 
 <script>
 var doseDone = false;
-
-function switchTab(name) {
-  document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-  document.getElementById('page-' + name).classList.add('active');
+function switchTab(n) {
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+  document.getElementById('page-'+n).classList.add('active');
 }
-
 function toggleDose() {
   doseDone = !doseDone;
   var btn = document.getElementById('doseBtn');
   var val = document.getElementById('streakVal');
   if (doseDone) {
     btn.className = 'dose-btn done';
-    btn.innerHTML = '<i class="ti ti-check"></i> Dose tomada hoje!';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:var(--green-text);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 12"/></svg> Dose tomada hoje!';
     val.textContent = '15';
   } else {
     btn.className = 'dose-btn';
-    btn.innerHTML = '<i class="ti ti-droplet"></i> Marcar dose tomada';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg> Marcar dose tomada';
     val.textContent = '14';
   }
 }
-
-(function() {
+(function(){
   var g = document.getElementById('streakGrid');
-  var done = [1,2,3,5,6,7,8,9,12,13,14,15,16,19];
-  for (var i = 1; i <= 20; i++) {
-    var d = document.createElement('div');
-    var cls = 'streak-day';
-    if (done.indexOf(i) > -1) cls += ' done';
-    else if (i === 20) cls += ' today';
-    d.className = cls;
-    d.textContent = i;
-    g.appendChild(d);
+  var done=[1,2,3,5,6,7,8,9,12,13,14,15,16,19];
+  for(var i=1;i<=20;i++){
+    var d=document.createElement('div');
+    d.className='streak-day'+(done.indexOf(i)>-1?' done':'')+(i===20?' today':'');
+    d.textContent=i; g.appendChild(d);
   }
 })();
-
-(function() {
-  var g = document.getElementById('weekGrid');
-  var data = [
-    {l:'12',done:true},{l:'13',done:true},{l:'14',done:true},
-    {l:'15',done:false},{l:'16',done:true},{l:'17',rest:true},{l:'18',rest:true}
-  ];
-  data.forEach(function(item) {
-    var c = document.createElement('div');
-    c.className = 'week-cell' + (item.done?' done':'') + (item.rest?' rest':'');
-    c.textContent = item.l;
-    if (!item.done && !item.rest) c.onclick = function() { this.classList.add('done'); };
+(function(){
+  var g=document.getElementById('weekGrid');
+  var data=[{l:'12',done:true},{l:'13',done:true},{l:'14',done:true},{l:'15',done:false},{l:'16',done:true},{l:'17',rest:true},{l:'18',rest:true}];
+  data.forEach(function(item){
+    var c=document.createElement('div');
+    c.className='week-cell'+(item.done?' done':'')+(item.rest?' rest':'');
+    c.textContent=item.l;
+    if(!item.done&&!item.rest)c.onclick=function(){this.classList.add('done');};
     g.appendChild(c);
   });
 })();
-
-(function() {
-  var row = document.getElementById('modalidades');
-  ['Musculação','Corrida','Yoga','Pilates','Natação','Outro'].forEach(function(m) {
-    var b = document.createElement('button');
-    b.className = 'mod-btn';
-    b.textContent = m;
-    b.onclick = function() {
-      row.querySelectorAll('.mod-btn').forEach(function(x) { x.classList.remove('active'); });
+(function(){
+  var row=document.getElementById('modalidades');
+  ['Musculação','Corrida','Yoga','Pilates','Natação','Outro'].forEach(function(m){
+    var b=document.createElement('button');
+    b.className='mod-btn'; b.textContent=m;
+    b.onclick=function(){
+      row.querySelectorAll('.mod-btn').forEach(function(x){x.classList.remove('active');});
       this.classList.add('active');
     };
     row.appendChild(b);
