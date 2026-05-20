@@ -1,1 +1,0 @@
-# lovday_app
